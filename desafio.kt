@@ -27,18 +27,18 @@ data class Hunts(val nome: String, val dicas: List<LocaisdeHunt>, val nivel: Cal
 
 fun main() {
     
-    val PlanilhaKnight = MelhoresLocaisdeHunt ("Do 0 ao 1000", 70, Calculator.Intermediário)
-    val PlanilhaPaladin = MelhoresLocaisdeHunt("Do 0 ao 1000", 80, Calculator.Intermediário)
-    val PlanilhaDruid = MelhoresLocaisdeHunt("Do 0 ao 1000", 90, Calculator.Avançado)
-    val PlanilhaSorcerer = MelhoresLocaisdeHunt("Do 0 ao 1000", 90, Calculator.Avançado)
+    val PlanilhaKnight = LocaisdeHunt ("Do 0 ao 1000", 70, nivel.Calculator)
+    val PlanilhaPaladin = LocaisdeHunt("Do 0 ao 1000", 80, nivel.Calculator)
+    val PlanilhaDruid = LocaisdeHunt("Do 0 ao 1000", 90, nivel.Calculator)
+    val PlanilhaSorcerer = LocaisdeHunt("Do 0 ao 1000", 90, nivel.Calculator)
     
-    val listMelhoresLocaisdeHunt = mutableListOf<Usuario>()
-    listMelhoresLocaisdeHunt.add(PlanilhaKnight)
-    listMelhoresLocaisdeHunt.add(PlanilhaPaladin)
-    listMelhoresLocaisdeHunt.add(PlanilhaDruid)
-    listMelhoresLocaisdeHunt.add(PlanilhaSorcerer)
+    val listLocaisdeHunt = mutableListOf<Usuario>()
+    listLocaisdeHunt.add(PlanilhaKnight)
+    listLocaisdeHunt.add(PlanilhaPaladin)
+    listLocaisdeHunt.add(PlanilhaDruid)
+    listLocaisdeHunt.add(PlanilhaSorcerer)
     
-    val Hunts = Vocação("Tutorial Level e Skill", listMelhoresLocaisdeHunt, Calculator.Avançado)
+    val Hunts = Vocação("Tutorial Level e Skill", listLocaisdeHunt, nivel.Calculator)
     
     val Knight = Usuario("Char", "knight@zmail.com", "premium")
     val Paladin = Usuario("Char", "paladin@zmail.com", "premium")
@@ -48,9 +48,9 @@ fun main() {
     Hunts.cadastrar()
     Hunts.cadastrar()
     
-    print("Calculator: ")
-    println("${Hunts.level} - ${Hunts.Calculator}")
-    println(Hunts.imprimirGradePlanilha())
+    print("Hunts: ")
+    println("${Hunts.level} - ${Hunts.nivel}")
+    println(Hunts.imprimirLocaisdeHunt())
     println()
     println("Opções de hunts: ")
     println(Hunts.imprimirHunts())
