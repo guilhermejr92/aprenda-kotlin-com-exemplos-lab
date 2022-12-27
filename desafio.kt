@@ -2,7 +2,7 @@ enum class Nivel {Básico, Intermediário, Avançado}
 
 data class Usuario(val level: String, val skill: String, val vocação: String)
 
-data class Planilha&Tutorial(val level: String, val duracao: Int, val nivel: Calculator)
+data class Planilha(val level: String, val duracao: Int, val nivel: Calculator)
 
 data class Hunts(val nome: String, val dicas: List<MelhoresLocaisdeHunt>, val nivel: Calculator) {
 
@@ -18,7 +18,7 @@ data class Hunts(val nome: String, val dicas: List<MelhoresLocaisdeHunt>, val ni
         }
     }
     
-    fun imprimirGradePlanilha&Tutorial(){
+    fun imprimirGradePlanilha(){
         for(cont in dicas){
             println("${cont.level} - ${cont.duracao}")
         }
@@ -35,7 +35,7 @@ fun main() {
     val listMelhoresLocaisdeHunt = mutableListOf<Usuario>()
     listMelhoresLocaisdeHunt.add(PlanilhaKnight)
     listMelhoresLocaisdeHunt.add(PlanilhaPaladin)
-    listMelhoresLocaisdeHunt.add(PlanilhaMage)
+    listMelhoresLocaisdeHunt.add(PlanilhaDruid)
     listMelhoresLocaisdeHunt.add(PlanilhaSorcerer)
     
     val Calculator = Vocação("Tutorial Level e Skill", listMelhoresLocaisdeHunt, Nivel.Avançado)
@@ -50,8 +50,8 @@ fun main() {
     
     print("Calculator: ")
     println("${Calculator.level} - ${Calculator.nivel}")
-    println(Calculator.imprimirGradeVocação())
+    println(Calculator.imprimirGradePlanilha())
     println()
     println("Opções de hunts: ")
-    println(Calculator.imprimirOpçõesdehunts())
+    println(Calculator.imprimirHunts())
 }
