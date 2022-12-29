@@ -1,24 +1,24 @@
 enum class Nivel {Básico, Intermediário, Avançado}
 
-data class Usuario(val level: String, val skill: String, val vocação: String)
+data class Usuario(val level: String, val skill: String, val tipoVocação: String)
 
-data class Planilha(val level: String, val duracao: Int, val nivel: Calculator)
+data class Planilha(val level: String, val duracao: Int, val nivel: Nivel)
 
-data class Hunts(val nome: String, val dicas: List<LocaisdeHunt>, val nivel: Calculator) {
+data class Hunts(val nome: String, val dicas: List<Planilha>, val nivel: Nivel) {
 
     val classes = mutableListOf<Usuario>()
     
     fun cadastrar(usuario: Usuario) {
-        cadastrar.add(usuario)
+        classes.add(usuario)
     }
     
-    fun imprimirListaCadastrar(){
-        for(user in cadastrar){
+    fun imprimirListaClasses(){
+        for(user in classes){
             println(user.level)
         }
     }
     
-    fun imprimirGradePlanilha(){
+    fun imprimirGradeHunts(){
         for(cont in dicas){
             println("${cont.level} - ${cont.duracao}")
         }
@@ -27,31 +27,32 @@ data class Hunts(val nome: String, val dicas: List<LocaisdeHunt>, val nivel: Cal
 
 fun main() {
     
-    val PlanilhaKnight = LocaisdeHunt ("Do 0 ao 1000", 70, nivel.Calculator)
-    val PlanilhaPaladin = LocaisdeHunt("Do 0 ao 1000", 80, nivel.Calculator)
-    val PlanilhaDruid = LocaisdeHunt("Do 0 ao 1000", 90, nivel.Calculator)
-    val PlanilhaSorcerer = LocaisdeHunt("Do 0 ao 1000", 90, nivel.Calculator)
+    val ModuloKnight = Planilha ("Do 0 ao 1000", 70, Nivel.Intermediário)
+    val ModuloPaladin = Planilha ("Do 0 ao 1000", 80, Nivel.Intermediário)
+    val ModuloDruid = Planilha ("Do 0 ao 1000", 90, Nivel.Avançado)
+    val ModuloSorcerer = Planilha ("Do 0 ao 1000", 90, Nivel.Avançado)
     
-    val listLocaisdeHunt = mutableListOf<Usuario>()
-    listLocaisdeHunt.add(PlanilhaKnight)
-    listLocaisdeHunt.add(PlanilhaPaladin)
-    listLocaisdeHunt.add(PlanilhaDruid)
-    listLocaisdeHunt.add(PlanilhaSorcerer)
+    val listDicas = mutableListOf<Planilha>()
+    listDicas.add(ModuloKnight)
+    listDicas.add(ModuloPaladin)
+    listDicas.add(ModuloDruid)
+    listDicas.add(ModuloSorcerer)
     
-    val Hunts = Vocação("Tutorial Level e Skill", listLocaisdeHunt, nivel.Calculator)
+    val Hunts = Hunts("Tutorial Level Up", listDicas, Nivel.Avançado)
     
-    val Knight = Usuario("Char", "knight@zmail.com", "premium")
-    val Paladin = Usuario("Char", "paladin@zmail.com", "premium")
-    val Druid = Usuario("Char", "druid@zmail.com", "premium")
-    val Sorcerer = Usuario("Char", "sorcerer@zmail.com", "premium")
+    val Knight = Usuario("Knight", "knight@zmail.com", "premium")
+    val Paladin = Usuario("Paladin", "paladin@zmail.com", "premium")
+    val Druid = Usuario("Druid", "druid@zmail.com", "premium")
+    val Sorcerer = Usuario("Sorcerer", "sorcerer@zmail.com", "premium")
     
-    Hunts.cadastrar()
-    Hunts.cadastrar()
+    Hunts.cadastrar(Knight)
+    Hunts.cadastrar(Druid)
     
     print("Hunts: ")
-    println("${Hunts.level} - ${Hunts.nivel}")
-    println(Hunts.imprimirLocaisdeHunt())
+    println("${Hunts.nome} - ${Hunts.nivel}")
+    println("Syllabus: ")
+    println(Hunts.imprimirGradeHunts())
     println()
     println("Opções de hunts: ")
-    println(Hunts.imprimirHunts())
+    println(Hunts.imprimirGradeHunts())
 }
