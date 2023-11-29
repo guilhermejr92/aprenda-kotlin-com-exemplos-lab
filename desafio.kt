@@ -47,6 +47,8 @@ fun main() {
     
     Hunts.cadastrar(Knight)
     Hunts.cadastrar(Druid)
+    Hunts.cadastrar(Sorcerer)
+    Hunts.cadastrar(Paladin)
     
     print("Hunts: ")
     println("${Hunts.nome} - ${Hunts.nivel}")
